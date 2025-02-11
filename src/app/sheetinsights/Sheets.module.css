@@ -1,0 +1,13 @@
+.menu{
+    background-color: black;
+    color: white;
+}
+.uploadButton {
+    background-color: black;
+    color: white; 
+}
+
+.uploadButton:hover {
+    background-color: darkblue;
+    color: white; 
+}
