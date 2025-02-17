@@ -1,115 +1,124 @@
 .container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
-    padding: 0 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .main {
-    padding: 5rem 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 800px;
-    width: 100%;
-  }
-  
+.main {
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+  text-align: center;
+  color: #1a237e;
+}
+
+.description {
+  text-align: center;
+  line-height: 1.5;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.intro {
+  margin: 2rem 0;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.cta h2 {
+  color: #1a237e;
+  margin-bottom: 1rem;
+}
+
+.cta form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 300px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.cta button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta button:hover {
+  background-color: green;
+}
+
+/* Loader styles */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
   .title {
-    margin: 0;
-    line-height: 1.15;
-    font-size: 4rem;
-    text-align: center;
-    color: #1a237e;
+    font-size: 3rem;
   }
   
   .description {
-    text-align: center;
-    line-height: 1.5;
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .intro {
-    margin: 2rem 0;
-    text-align: center;
     font-size: 1.2rem;
-    color: #555;
-  }
-  
-  .features {
-    margin: 2rem 0;
-  }
-  
-  .features ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
-  }
-  
-  .features li {
-    margin: 1rem 0;
-    font-size: 1.1rem;
-    color: #444;
-  }
-  
-  .cta {
-    margin-top: 2rem;
-    text-align: center;
-  }
-  
-  .cta h2 {
-    color: #1a237e;
-    margin-bottom: 1rem;
-  }
-  
-  .cta form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
   
   .cta input {
-    padding: 0.5rem;
-    font-size: 1rem;
-    width: 300px;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: 100%;
   }
-  
-  .cta button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cta button:hover {
-    background-color: green;
-  }
-  
-  @media (max-width: 600px) {
-    .title {
-      font-size: 3rem;
-    }
-    
-    .description {
-      font-size: 1.2rem;
-    }
-    
-    .cta input {
-      width: 100%;
-    }
-  }
-
-
-  
+}

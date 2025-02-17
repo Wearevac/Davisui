@@ -1,14 +1,24 @@
 "use client";
+
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 
+// Loader component
+const Loader: React.FC = () => (
+  <div className={styles.loader}>
+    <div className={styles.spinner}></div>
+  </div>
+);
+
 export default function Landing() {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     console.log("Form submitted with username:", username);
 
     try {
@@ -36,11 +46,14 @@ export default function Landing() {
       }
     } catch (error) {
       console.error("Error during submission:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className={styles.container}>
+      {isLoading && <Loader />}
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to DaVis</h1>
         <p className={styles.description}>Discover the Power of Data</p>

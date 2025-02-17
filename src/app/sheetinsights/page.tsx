@@ -71,88 +71,91 @@ export default function SheetInsights() {
     };
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="fixed" className={styles.menu}>
-                <Toolbar>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        Davis-Explore: Sheet Insight Hub
-                    </Typography>
-                    <div>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleMenu}
-                            color="inherit"
-                        >
-                            <AccountCircle />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorEl}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorEl)}
-                            onClose={handleClose}
-                        >
-                            <MenuItem onClick={handleClose}>Username</MenuItem>
-                            <MenuItem onClick={handleClose}>Logout</MenuItem>
-                            <MenuItem>Profile</MenuItem>
-                        </Menu>
-                    </div>
-                </Toolbar>
-            </AppBar>
-            <Toolbar />
-            <Box sx={{ mt: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <input
-                    accept=".csv,.xlsx"
-                    style={{ display: 'none' }}
-                    id="raised-button-file"
-                    type="file"
-                    onChange={handleFileUpload}
-                />
-                <label htmlFor="raised-button-file">
-                    <Button variant="contained" component="span" startIcon={<CloudUploadIcon />}>
-                        Upload File
-                    </Button>
-                </label>
-                {file && (
-                    <Box sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
-                        <Typography variant="body1">
-                            {file.name}
-                        </Typography>
-                        <IconButton onClick={handleDisconnect} size="small">
-                            <CloseIcon />
-                        </IconButton>
-                    </Box>
-                )}
-                {isLoading && <CircularProgress sx={{ mt: 2 }} />}
-            </Box>
-            <Snackbar
-                open={snackbarOpen}
-                autoHideDuration={6000}
-                onClose={() => setSnackbarOpen(false)}
-                message={snackbarMessage}
-                action={
-                    <IconButton
-                        size="small"
-                        aria-label="close"
-                        color="inherit"
-                        onClick={() => setSnackbarOpen(false)}
-                    >
-                        <CloseIcon fontSize="small" />
-                    </IconButton>
-                }
-            />
-        </Box>
+        <>
+        <h1>Stay tight! We are building it</h1>
+        </>
+        // <Box sx={{ flexGrow: 1 }}>
+        //     <AppBar position="fixed" className={styles.menu}>
+        //         <Toolbar>
+        //             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        //                 Davis-Explore: Sheet Insight Hub
+        //             </Typography>
+        //             <div>
+        //                 <IconButton
+        //                     size="large"
+        //                     aria-label="account of current user"
+        //                     aria-controls="menu-appbar"
+        //                     aria-haspopup="true"
+        //                     onClick={handleMenu}
+        //                     color="inherit"
+        //                 >
+        //                     <AccountCircle />
+        //                 </IconButton>
+        //                 <Menu
+        //                     id="menu-appbar"
+        //                     anchorEl={anchorEl}
+        //                     anchorOrigin={{
+        //                         vertical: 'top',
+        //                         horizontal: 'right',
+        //                     }}
+        //                     keepMounted
+        //                     transformOrigin={{
+        //                         vertical: 'top',
+        //                         horizontal: 'right',
+        //                     }}
+        //                     open={Boolean(anchorEl)}
+        //                     onClose={handleClose}
+        //                 >
+        //                     <MenuItem onClick={handleClose}>Username</MenuItem>
+        //                     <MenuItem onClick={handleClose}>Logout</MenuItem>
+        //                     <MenuItem>Profile</MenuItem>
+        //                 </Menu>
+        //             </div>
+        //         </Toolbar>
+        //     </AppBar>
+        //     <Toolbar />
+        //     <Box sx={{ mt: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        //         <input
+        //             accept=".csv,.xlsx"
+        //             style={{ display: 'none' }}
+        //             id="raised-button-file"
+        //             type="file"
+        //             onChange={handleFileUpload}
+        //         />
+        //         <label htmlFor="raised-button-file">
+        //             <Button variant="contained" component="span" startIcon={<CloudUploadIcon />}>
+        //                 Upload File
+        //             </Button>
+        //         </label>
+        //         {file && (
+        //             <Box sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
+        //                 <Typography variant="body1">
+        //                     {file.name}
+        //                 </Typography>
+        //                 <IconButton onClick={handleDisconnect} size="small">
+        //                     <CloseIcon />
+        //                 </IconButton>
+        //             </Box>
+        //         )}
+        //         {isLoading && <CircularProgress sx={{ mt: 2 }} />}
+        //     </Box>
+        //     <Snackbar
+        //         open={snackbarOpen}
+        //         autoHideDuration={6000}
+        //         onClose={() => setSnackbarOpen(false)}
+        //         message={snackbarMessage}
+        //         action={
+        //             <IconButton
+        //                 size="small"
+        //                 aria-label="close"
+        //                 color="inherit"
+        //                 onClick={() => setSnackbarOpen(false)}
+        //             >
+        //                 <CloseIcon fontSize="small" />
+        //             </IconButton>
+        //         }
+        //     />
+        // </Box>
     );
 }
 

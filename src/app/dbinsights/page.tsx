@@ -7,10 +7,13 @@ export default function DbInsights() {
   const [username, setUsername] = useState('');
   const [dbType, setDbType] = useState('');
   const [connectionString, setConnectionString] = useState('');
-  const [hostname, setHostname] = useState('');
+  // const [hostname, setHostname] = useState('');
+  const [dbusername, setdbUsername] = useState('');
+  const [host, setHost] = useState('');
   const [port, setPort] = useState('');
-  const [password, setPassword] = useState('');
-  const [dbName, setDbName] = useState('');
+  const [dbpassword, setPassword] = useState('');
+  const [database, setDatabase] = useState(''); 
+  // const [dbName, setDbName] = useState('');
   const [tables, setTables] = useState<string[]>([]);
   const [selectedTable, setSelectedTable] = useState('');
   const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
@@ -32,12 +35,41 @@ export default function DbInsights() {
     sessionStorage.removeItem('username');
     router.push('/');
   };
+  // Mock simulation
+  // const handleDbConnect = () => {
+  //   // Simulating DB connection and fetching tables
+  //   const mockTables = ['users', 'products', 'orders', 'customers', 'inventory', 'suppliers'];
+  //   setTables(mockTables);
+  //   setMessages(prev => [...prev, { role: 'system', content: 'Database connected successfully. Please select a table.' }]);
+  // };
 
-  const handleDbConnect = () => {
-    // Simulating DB connection and fetching tables
-    const mockTables = ['users', 'products', 'orders', 'customers', 'inventory', 'suppliers'];
-    setTables(mockTables);
-    setMessages(prev => [...prev, { role: 'system', content: 'Database connected successfully. Please select a table.' }]);
+  const handleDbConnect = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/connect', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          dbType,
+          host,
+          port,
+          dbusername,
+          dbpassword,
+          database,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to connect to the database');
+      }
+
+      const data = await response.json();
+      setTables(data.tables);
+      setMessages(prev => [...prev, { role: 'system', content: 'Database connected successfully. Please select a table.' }]);
+    } catch (error) {
+      setMessages(prev => [...prev, { role: 'system', content: `Error: ${(error as Error).message}` }]);
+    }
   };
 
   const handleTableSelect = (table: string) => {
@@ -80,22 +112,15 @@ export default function DbInsights() {
               <option value="">Select DB Type</option>
               <option value="mysql">MySQL</option>
               <option value="oracle">Oracle</option>
-              <option value="postgres">PostgreSQL</option>
+              <option value="postgresql">PostgreSQL</option>
             </select>
             {dbType && (
               <div className={styles.connectionForm}>
-                <input
+                          <input
                   type="text"
-                  value={connectionString}
-                  onChange={(e) => setConnectionString(e.target.value)}
-                  placeholder="Connection String"
-                  className={styles.dbInput}
-                />
-                <input
-                  type="text"
-                  value={hostname}
-                  onChange={(e) => setHostname(e.target.value)}
-                  placeholder="Hostname"
+                  value={host}
+                  onChange={(e) => setHost(e.target.value)}
+                  placeholder="Host"
                   className={styles.dbInput}
                 />
                 <input
@@ -106,16 +131,23 @@ export default function DbInsights() {
                   className={styles.dbInput}
                 />
                 <input
+                  type="text"
+                  value={dbusername}
+                  onChange={(e) => setdbUsername(e.target.value)}
+                  placeholder="Username"
+                  className={styles.dbInput}
+                />
+                <input
                   type="password"
-                  value={password}
+                  value={dbpassword}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
                   className={styles.dbInput}
                 />
                 <input
                   type="text"
-                  value={dbName}
-                  onChange={(e) => setDbName(e.target.value)}
+                  value={database}
+                  onChange={(e) => setDatabase(e.target.value)}
                   placeholder="Database Name"
                   className={styles.dbInput}
                 />
