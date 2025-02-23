@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
+import { API_ENDPOINTS } from "./API/ApiStore";
 
 // Loader component
 const Loader: React.FC = () => (
@@ -22,7 +23,7 @@ export default function Landing() {
     console.log("Form submitted with username:", username);
 
     try {
-      const response = await fetch("http://localhost:5000/api/addUser", {
+      const response = await fetch(API_ENDPOINTS.addUser, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
